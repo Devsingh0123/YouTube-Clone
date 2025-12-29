@@ -2,15 +2,18 @@ import React from "react";
 
 import { FiMenu, FiSearch, FiBell, FiVideo, FiMic } from "react-icons/fi";
 import youTubeLogo from "../../assets/youTubeLogo.png";
+import { useDispatch } from "react-redux";
+import { toggleSidebar } from "../../redux/slices/toggalMenuSlice";
 
 const Navbar = () => {
+  const dispatch =useDispatch()
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white ">
       <div className="flex items-center justify-between px-4 h-14">
         {/* Left Section */}
         <div className="flex items-center gap-4">
-          <FiMenu className="text-2xl cursor-pointer"  />
+          <FiMenu className="text-2xl cursor-pointer" onClick={()=>{dispatch(toggleSidebar())}} />
 
           <div className="flex items-center gap-1 cursor-pointer">
             <img src={youTubeLogo} alt="YouTube" className="h-14" />
