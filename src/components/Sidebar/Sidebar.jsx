@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector(
-    (state) => state.toggalMenuReducer.isSidebarOpen
+    (state) => state.toggleMenuReducer.isSidebarOpen
   );
   return (
     <aside

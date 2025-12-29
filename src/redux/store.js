@@ -1,12 +1,12 @@
 import {configureStore} from "@reduxjs/toolkit"
 
-import toggalMenuReducer from "./slices/toggalMenuSlice"
+import toggleMenuReducer from "./slices/toggleMenuSlice"
 
 
 
 const store = configureStore({
   reducer: {
-    toggalMenuReducer,
+    toggleMenuReducer:toggleMenuReducer,
   },
 });
 

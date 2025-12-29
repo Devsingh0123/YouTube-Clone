@@ -4,8 +4,8 @@ const initialState = {
   isSidebarOpen: true,
 };
 
-const toggalMenuSlice = createSlice({
-  name: "toggalMenu",
+const toggleMenuSlice = createSlice({
+  name: "toggleMenu",
   initialState,
   reducers: {
     toggleSidebar: (state) => {
@@ -14,6 +14,6 @@ const toggalMenuSlice = createSlice({
   },
 });
 
-export const {toggleSidebar} =toggalMenuSlice.actions
+export const {toggleSidebar} =toggleMenuSlice.actions
 
-export default toggalMenuSlice.reducer
+export default toggleMenuSlice.reducer

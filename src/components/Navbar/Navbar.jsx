@@ -3,7 +3,7 @@ import React from "react";
 import { FiMenu, FiSearch, FiBell, FiVideo, FiMic } from "react-icons/fi";
 import youTubeLogo from "../../assets/youTubeLogo.png";
 import { useDispatch } from "react-redux";
-import { toggleSidebar } from "../../redux/slices/toggalMenuSlice";
+import { toggleSidebar } from "../../redux/slices/toggleMenuSlice";
 
 const Navbar = () => {
   const dispatch =useDispatch()

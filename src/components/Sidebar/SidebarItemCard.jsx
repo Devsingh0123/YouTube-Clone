@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const SidebarItemCard = ({ icon, label, active }) => {
 
-  const isSidebarOpen = useSelector(state => state.toggalMenuReducer.isSidebarOpen)
+  const isSidebarOpen = useSelector(state => state.toggleMenuReducer.isSidebarOpen)
   return (
     <div
       className={`flex items-center gap-5 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100
