@@ -1,7 +1,7 @@
 import React from "react";
 
 import { FiMenu, FiSearch, FiBell, FiVideo, FiMic } from "react-icons/fi";
-import youTubeLogo from "../../assets/youTubeLogo.png";
+import youTubeLogo from "../../assets/YouTubeLogo.png";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../../redux/slices/toggleMenuSlice";
 
