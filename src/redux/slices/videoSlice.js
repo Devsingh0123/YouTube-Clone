@@ -19,10 +19,12 @@ export const fetchPopularVideos = createAsyncThunk(
 const videosSlice = createSlice({
   name: "videos",
   initialState: {
-    items: [],
+    videos: [],
     loading: false,
     error: null,
+
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchPopularVideos.pending, (state) => {
@@ -30,7 +32,7 @@ const videosSlice = createSlice({
       })
       .addCase(fetchPopularVideos.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = action.payload;
+        state.videos = action.payload;
         // console.log(action);
         
       })
@@ -40,5 +42,8 @@ const videosSlice = createSlice({
       });
   },
 });
+
+export const { setSelectedVideoId, clearSelectedVideoId } =
+  videosSlice.actions;
 
 export default videosSlice.reducer;
