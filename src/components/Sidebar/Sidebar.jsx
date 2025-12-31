@@ -5,6 +5,20 @@ import { SiYoutubeshorts } from "react-icons/si";
 import SidebarItemCard from "./SidebarItemCard";
 import { useSelector } from "react-redux";
 
+import { FaHistory } from "react-icons/fa";
+import { CgPlayList } from "react-icons/cg";
+import { MdOutlineWatchLater } from "react-icons/md";
+import { GoDownload } from "react-icons/go";
+import { MdOutlineShoppingBag } from "react-icons/md";
+import { IoMusicalNoteOutline } from "react-icons/io5";
+import { GiFilmStrip } from "react-icons/gi";
+import { IoSettingsOutline } from "react-icons/io5";
+import { IoFlagOutline } from "react-icons/io5";
+import { IoIosHelpCircleOutline } from "react-icons/io";
+import { MdOutlineFeedback } from "react-icons/md";
+import { ImFeed } from "react-icons/im";
+
+
 const Sidebar = () => {
   const isSidebarOpen = useSelector(
     (state) => state.toggleMenuReducer.isSidebarOpen
@@ -22,66 +36,57 @@ const Sidebar = () => {
           label="Subscriptions"
         />
 
-        <hr className="my-3" />
+     
 
         <SidebarItemCard icon={<MdVideoLibrary />} label="Library" />
         <SidebarItemCard icon={<AiOutlineFire />} label="Trending" />
+           <hr className="my-3" />
       </div>
       <div className="px-2 py-3 space-y-1">
-        {/* Menu Item */}
-        <SidebarItemCard icon={<AiFillHome />} label="Home" active />
-        <SidebarItemCard icon={<SiYoutubeshorts />} label="Shorts" />
+
+
+        
+        <SidebarItemCard icon={<FaHistory />} label="History" />
+        <SidebarItemCard icon={<CgPlayList />} label="Playlists" />
         <SidebarItemCard
-          icon={<MdOutlineSubscriptions />}
-          label="Subscriptions"
+          icon={<MdOutlineWatchLater />}
+          label="Watch Later"
         />
 
-        <hr className="my-3" />
+        
 
-        <SidebarItemCard icon={<MdVideoLibrary />} label="Library" />
-        <SidebarItemCard icon={<AiOutlineFire />} label="Trending" />
+        <SidebarItemCard icon={<GoDownload />} label="Downloads" />
+        <hr className="my-3" />
+       
       </div>
       <div className="px-2 py-3 space-y-1">
-        {/* Menu Item */}
-        <SidebarItemCard icon={<AiFillHome />} label="Home" active />
-        <SidebarItemCard icon={<SiYoutubeshorts />} label="Shorts" />
+
+
+
+     
+        <SidebarItemCard icon={<MdOutlineShoppingBag />} label="Shopping" active />
+        <SidebarItemCard icon={<IoMusicalNoteOutline />} label="Music" />
         <SidebarItemCard
-          icon={<MdOutlineSubscriptions />}
-          label="Subscriptions"
+          icon={<GiFilmStrip />}
+          label="Films"
         />
 
-        <hr className="my-3" />
+       
 
-        <SidebarItemCard icon={<MdVideoLibrary />} label="Library" />
-        <SidebarItemCard icon={<AiOutlineFire />} label="Trending" />
+        <SidebarItemCard icon={<ImFeed />} label="Live" />
+         <hr className="my-3" />
+        
       </div>
       <div className="px-2 py-3 space-y-1">
-        {/* Menu Item */}
-        <SidebarItemCard icon={<AiFillHome />} label="Home" active />
-        <SidebarItemCard icon={<SiYoutubeshorts />} label="Shorts" />
+       <SidebarItemCard icon={<IoSettingsOutline />} label="Settings" />
+        <SidebarItemCard icon={<IoFlagOutline />} label="Report History" active />
+        <SidebarItemCard icon={<IoIosHelpCircleOutline />} label="Help" />
         <SidebarItemCard
-          icon={<MdOutlineSubscriptions />}
-          label="Subscriptions"
+          icon={<MdOutlineFeedback />}
+          label="Send Feedback"
         />
 
-        <hr className="my-3" />
-
-        <SidebarItemCard icon={<MdVideoLibrary />} label="Library" />
-        <SidebarItemCard icon={<AiOutlineFire />} label="Trending" />
-      </div>
-      <div className="px-2 py-3 space-y-1">
-        {/* Menu Item */}
-        <SidebarItemCard icon={<AiFillHome />} label="Home" active />
-        <SidebarItemCard icon={<SiYoutubeshorts />} label="Shorts" />
-        <SidebarItemCard
-          icon={<MdOutlineSubscriptions />}
-          label="Subscriptions"
-        />
-
-        <hr className="my-3" />
-
-        <SidebarItemCard icon={<MdVideoLibrary />} label="Library" />
-        <SidebarItemCard icon={<AiOutlineFire />} label="Trending" />
+        
       </div>
     </aside>
   );

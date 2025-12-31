@@ -1,19 +1,21 @@
 
 import React from "react";
 const categories = [
-  "All",
+   "All",
   "Music",
-  "Trailers",
-  "Avatar",
-  "Visual Effects",
-  "Mixes",
-  "Ajay Devgn",
-  "APIs",
-  "T-Series",
-  "Mythology",
-  "Akshaye Khanna",
-  "Film criticism",
-  "Romantic Music",
+  "Live",
+  "Gaming",
+  "News",
+  "Sports",
+  "Movies",
+  "Fashion",
+  "Podcasts",
+  "Technology",
+  "Comedy",
+  "Education",
+  "Recently uploaded",
+  "Watched",
+  "New to you",
 ];
 
 const ButtonList = () => {
