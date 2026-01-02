@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const VideoCard = ({ video }) => {
   const { snippet, statistics } = video;
   const [channelLogoUrl, setChannelLogoUrl] = useState(null);
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,7 +29,9 @@ const VideoCard = ({ video }) => {
   return (
     <div
       className="cursor-pointer"
-      onClick={() => {navigate(`/watch/${video.id}`)}}
+      onClick={() =>
+        navigate(`/watch/${video.id}`)
+      }
     >
       <img
         className="rounded-xl w-full"

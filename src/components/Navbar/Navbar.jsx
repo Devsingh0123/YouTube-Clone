@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { FiMenu, FiSearch, FiBell, FiVideo, FiMic } from "react-icons/fi";
 import youTubeLogo from "../../assets/YouTubeLogo.png";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../../redux/slices/toggleMenuSlice";
+import { CgProfile } from "react-icons/cg";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
-  const dispatch =useDispatch()
+  const dispatch = useDispatch();
+
+  const { user, loginWithRedirect, isAuthenticated, logout, isLoading } =
+    useAuth0();
+
+  console.log(user);
+
+  useEffect(() => {
+    console.log("isAuthenticated:", isAuthenticated);
+  }, [isAuthenticated]);
+
+  console.log(user);
+
+  if (isLoading) {
+  return (
+    <header className="fixed top-0 left-0 right-0 h-14 bg-white z-50 flex items-center px-4">
+      Loading...
+    </header>
+  );
+}
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white ">
       <div className="flex items-center justify-between px-4 h-14">
         {/* Left Section */}
         <div className="flex items-center gap-4">
-          <FiMenu className="text-2xl cursor-pointer" onClick={()=>{dispatch(toggleSidebar())}} />
+          <FiMenu
+            className="text-2xl cursor-pointer"
+            onClick={() => {
+              dispatch(toggleSidebar());
+            }}
+          />
 
           <div className="flex items-center gap-1 cursor-pointer">
             <img src={youTubeLogo} alt="YouTube" className="h-14" />
@@ -44,15 +70,30 @@ const Navbar = () => {
           <FiVideo className="text-xl cursor-pointer hidden sm:block" />
           <FiBell className="text-xl cursor-pointer hidden sm:block" />
 
-          <img
+          {isAuthenticated ? (
+            // <button onClick={(e) => logout()}>LogOut</button>
+            <button
+              onClick={() =>
+                logout({ logoutParams: { returnTo: window.location.origin } })
+              }
+            >
+              Log Out
+            </button>
+          ) : (
+            <button onClick={(e) => loginWithRedirect()}>LogIn</button>
+          )}
+
+          {/* {!user && <div onClick={()=>loginWithRedirect()}>
+          <CgProfile  className="w-8 h-8 rounded-full cursor-pointer " />
+          </div>}
+
+          {user && <img
             src="https://i.pravatar.cc/300"
             alt="profile"
             className="w-8 h-8 rounded-full cursor-pointer"
-          />
+          /> } */}
         </div>
       </div>
-
-      
     </header>
   );
 };

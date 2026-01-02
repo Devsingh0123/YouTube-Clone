@@ -1,11 +1,12 @@
 
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ReadMoreButton from "../components/ReadMoreButton";
 
 const Watch = () => {
   const { videoId } = useParams();
+
   const videos = useSelector((store) => store.videos.videos);
 
   const video = videos.find((v) => v.id === videoId);

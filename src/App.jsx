@@ -13,9 +13,10 @@ const App = () => {
     {
       path: "/",
       element: <Home />,
+      
       children: [
         {
-        index: true, // 👈 default route (/)
+        index: true,
         element: (
           <>
             <ButtonList />
