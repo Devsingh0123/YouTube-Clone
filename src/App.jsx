@@ -13,17 +13,17 @@ const App = () => {
     {
       path: "/",
       element: <Home />,
-      
+
       children: [
         {
-        index: true,
-        element: (
-          <>
-            <ButtonList />
-            <VideoContainer />
-          </>
-        ),
-      },
+          index: true,
+          element: (
+            <>
+              <ButtonList />
+              <VideoContainer />
+            </>
+          ),
+        },
         {
           path: "/watch/:videoId",
           element: <Watch />,

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { FiMenu, FiSearch, FiBell, FiVideo, FiMic } from "react-icons/fi";
 import youTubeLogo from "../../assets/YouTubeLogo.png";
@@ -14,20 +14,6 @@ const Navbar = () => {
     useAuth0();
 
   console.log(user);
-
-  useEffect(() => {
-    console.log("isAuthenticated:", isAuthenticated);
-  }, [isAuthenticated]);
-
-  console.log(user);
-
-  if (isLoading) {
-  return (
-    <header className="fixed top-0 left-0 right-0 h-14 bg-white z-50 flex items-center px-4">
-      Loading...
-    </header>
-  );
-}
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white ">
@@ -71,27 +57,30 @@ const Navbar = () => {
           <FiBell className="text-xl cursor-pointer hidden sm:block" />
 
           {isAuthenticated ? (
-            // <button onClick={(e) => logout()}>LogOut</button>
-            <button
-              onClick={() =>
-                logout({ logoutParams: { returnTo: window.location.origin } })
-              }
-            >
-              Log Out
-            </button>
+            
+            <>
+             
+              <button
+                onClick={() =>
+                  logout({ logoutParams: { returnTo: window.location.origin } })
+                }
+              >
+                Log Out
+              </button>
+              <img
+                src={user?.picture}
+                alt="profile"
+                className="w-8 h-8 rounded-full cursor-pointer"
+              />
+            </>
           ) : (
-            <button onClick={(e) => loginWithRedirect()}>LogIn</button>
+            <>
+              <button onClick={(e) => loginWithRedirect()}>LogIn</button>
+              <CgProfile className="w-8 h-8 rounded-full cursor-pointer " />
+            </>
           )}
 
-          {/* {!user && <div onClick={()=>loginWithRedirect()}>
-          <CgProfile  className="w-8 h-8 rounded-full cursor-pointer " />
-          </div>}
-
-          {user && <img
-            src="https://i.pravatar.cc/300"
-            alt="profile"
-            className="w-8 h-8 rounded-full cursor-pointer"
-          /> } */}
+          
         </div>
       </div>
     </header>
