@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { FiMenu, FiSearch, FiBell, FiVideo, FiMic } from "react-icons/fi";
 import youTubeLogo from "../../assets/YouTubeLogo.png";
@@ -8,12 +8,30 @@ import { CgProfile } from "react-icons/cg";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
+  let [loginButton, setLoginButton] = useState(false);
+  let [logOutButton, setLogOutButton] = useState(false);
   const dispatch = useDispatch();
+  const dropdownRef = useRef(null);
 
   const { user, loginWithRedirect, isAuthenticated, logout, isLoading } =
     useAuth0();
 
   console.log(user);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setLogOutButton(false);
+        setLoginButton(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white ">
@@ -57,30 +75,56 @@ const Navbar = () => {
           <FiBell className="text-xl cursor-pointer hidden sm:block" />
 
           {isAuthenticated ? (
-            
             <>
-             
-              <button
-                onClick={() =>
-                  logout({ logoutParams: { returnTo: window.location.origin } })
-                }
-              >
-                Log Out
-              </button>
               <img
                 src={user?.picture}
                 alt="profile"
                 className="w-8 h-8 rounded-full cursor-pointer"
+                onClick={() => {
+                  setLogOutButton((prev) => !prev);
+                }}
               />
+              {logOutButton && (
+                <div
+                  ref={dropdownRef}
+                  className="min-w-[180px] flex flex-col gap-2 px-3 py-2 absolute top-12 right-3.5 bg-gray-200 text-md rounded-lg"
+                >
+                  <button
+                    className="cursor-pointer rounded-md text-white bg-gray-400 hover:bg-gray-600 transition-all p-2 text-center"
+                    onClick={() =>
+                      logout({
+                        logoutParams: { returnTo: window.location.origin },
+                      })
+                    }
+                  >
+                    LogOut
+                  </button>
+                </div>
+              )}
             </>
           ) : (
             <>
-              <button onClick={(e) => loginWithRedirect()}>LogIn</button>
-              <CgProfile className="w-8 h-8 rounded-full cursor-pointer " />
+              <CgProfile
+                className="w-6 h-6 cursor-pointer hover:text-gray-600"
+                onClick={() => {
+                  setLoginButton((prev) => !prev);
+                }}
+              />
+              {loginButton && (
+                <div
+                  ref={dropdownRef}
+                  className="min-w-[180px] flex flex-col gap-2 px-3 py-2 absolute top-12 right-3.5 bg-gray-200 text-md rounded-lg"
+                >
+                  <button
+                    className="cursor-pointer rounded-md text-white bg-gray-400 hover:bg-gray-600 transition-all p-2 text-center"
+                    onClick={() => loginWithRedirect()}
+                  >
+                    LogIn
+                  </button>
+                </div>
+              )}
             </>
           )}
-
-          
         </div>
       </div>
     </header>
