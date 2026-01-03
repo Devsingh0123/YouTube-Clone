@@ -18,20 +18,7 @@ const Navbar = () => {
 
   console.log(user);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setLogOutButton(false);
-        setLoginButton(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white ">
@@ -86,7 +73,7 @@ const Navbar = () => {
               />
               {logOutButton && (
                 <div
-                  ref={dropdownRef}
+                  
                   className="min-w-[180px] flex flex-col gap-2 px-3 py-2 absolute top-12 right-3.5 bg-gray-200 text-md rounded-lg"
                 >
                   <button
@@ -112,7 +99,7 @@ const Navbar = () => {
               />
               {loginButton && (
                 <div
-                  ref={dropdownRef}
+                  
                   className="min-w-[180px] flex flex-col gap-2 px-3 py-2 absolute top-12 right-3.5 bg-gray-200 text-md rounded-lg"
                 >
                   <button
